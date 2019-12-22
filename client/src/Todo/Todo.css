@@ -1,0 +1,21 @@
+
+.Todo-container {
+    background-color: #fff;
+    border: 1px solid #acacac;
+    border-radius: 8px;
+    flex: 0 1 25%;
+    margin: 8px;
+    padding: 8px;
+}
+
+.Todo-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.Todo-description {
+    font-size: 0.845rem;
+    line-height: 18px;
+    padding:8px;
+}
