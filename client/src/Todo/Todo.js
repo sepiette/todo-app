@@ -1,16 +1,29 @@
 import React from 'react';
 import './Todo.css';
-import {deleteTodo} from '../ApiServices/TodoService';
 
 function Todo(props) {
+    let isChecked = (todo) => {
+        if (todo.completed) {
+            return <i className="Todo-completed icofont-checked text-green" title="Completed?"></i>
+        }
+        return <div className="Todo-completed">
+            <span className="checkbox" 
+            title="Completed?" 
+            onClick={() => {props.updateCompleted(props.todo.id)}}></span>
+        </div>
+    }
     return (
         <div className="Todo-container">
-            <div className="Todo-title">{props.todo.title}</div>
-            <div className="Todo-delete" onClick={() => props.removeTodo(props.todo.id)}>X</div>
+            <div className="Todo-header">
+                {isChecked(props.todo)}
+                <div className="Todo-title">{props.todo.title}</div>
+            </div>
             <div className="Todo-description">{props.todo.description}</div>
-            Complete? <input type="checkbox" className="Todo-completed" />
+            <i className="Todo-delete icofont-bin text-red text-red-hover" 
+                title="Delete" 
+                onClick={() => props.removeTodo(props.todo.id)}></i>
         </div>
     )
 }
 
-export default Todo
+export default Todo;

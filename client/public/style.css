@@ -1,3 +1,29 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
 }
+
+.checkbox {
+    display: block;
+    height: 18px;
+    width: 18px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+}
+
+.checkbox:hover { 
+    background-color: #efefef;
+}
+
+
+/* Text Colors */
+.text-green {
+    color: #6ac74c;
+}
+
+.text-red {
+    color: #c7564c;
+}
+
+.text-red-hover:hover {
+    color: #a1382f;
+}

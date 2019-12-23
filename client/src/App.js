@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Todo from './Todo/Todo';
 import axios from 'axios';
-import { getTodos, createTodo, deleteTodo } from './ApiServices/TodoService';
+import {cloneDeep} from 'lodash';
+import { getTodos, createTodo, deleteTodo, updateTodo } from './ApiServices/TodoService';
 import './App.css';
 
 function App() {
@@ -11,7 +12,7 @@ function App() {
     };
     const [todos, setTodos] = useState([]);
     const [showAddToDo, setShowAddToDo] = useState(false);
-    let newTodo = {...DEFAULT_TODO};
+    let newTodo = { ...DEFAULT_TODO };
 
     useEffect(() => {
         fetchToDos();
@@ -24,15 +25,25 @@ function App() {
     }
 
     let removeTodo = (id) => {
-        console.log('removeTodo', id);
         deleteTodo(id).then(() => fetchToDos());
     }
 
     let addToDo = () => {
-        createTodo(newTodo).then( () => fetchToDos());
+        createTodo(newTodo).then(() => fetchToDos());
         setShowAddToDo(false);
-        newTodo = {...DEFAULT_TODO};
+        newTodo = { ...DEFAULT_TODO };
     };
+
+    let updateCompletedTodo = (id) => {
+        const foundTodo = todos.find(todo => todo.id === id) || null;
+        if (foundTodo !== null) {
+            const currentTodo = cloneDeep(foundTodo);
+            console.log(currentTodo)
+            currentTodo.completed = true;
+            updateTodo(currentTodo).then(() => fetchToDos());
+        }
+
+    }
 
     let showAddToDoForm = () => {
         if (showAddToDo) {
@@ -53,7 +64,10 @@ function App() {
             <button className="App-btn" onClick={() => setShowAddToDo(true)}>Add Todo</button>
             <div className="App-container">
                 {todos.map(todo => {
-                    return <Todo key={todo.id} todo={todo} removeTodo={removeTodo} />
+                    return <Todo key={todo.id}
+                        todo={todo}
+                        removeTodo={removeTodo}
+                        updateCompleted={updateCompletedTodo} />
                 })}
             </div>
             {showAddToDoForm()}
