@@ -1,7 +1,8 @@
+@import '../assets/_colors.scss';
 
 .Todo-container {
-    background-color: #fff;
-    border: 1px solid #acacac;
+    background-color: $white;
+    border: 1px solid $gray-500;
     border-radius: 8px;
     flex: 0 1 25%;
     display: flex;
@@ -12,7 +13,7 @@
 }
 
 .Todo-header {
-    border-bottom: 1px solid #acacac;
+    border-bottom: 1px solid $gray-500;
     display: flex;
     justify-content: space-between;
     margin-bottom: 8px;

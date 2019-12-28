@@ -1,5 +1,5 @@
 import React from 'react';
-import './Todo.css';
+import './Todo.scss';
 
 function Todo(props) {
     let isChecked = (todo) => {
@@ -15,14 +15,6 @@ function Todo(props) {
 
     let formatDate = (date) => {
         date = new Date(date);
-        var monthNames = [
-            "January", "February", "March",
-            "April", "May", "June", "July",
-            "August", "September", "October",
-            "November", "December"
-        ];
-    
-        console.log('get month', date.getMonth());
         return `${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}`;
     }
 

@@ -1,0 +1,34 @@
+@import '../assets/_colors.scss';
+@import '../assets/_spacing.scss';
+
+.Nav {
+    background-color: $theme-blue-600;
+    color: $white;
+    display: flex;
+    flex-direction: row;
+}
+
+.Nav-title {
+    margin: $sp-16;
+}
+
+.Nav-links {
+    display: flex;
+    align-items: center;
+    margin-left: $sp-40;
+}
+
+.Nav-links a {
+    color: $white;
+    display: inline-block;
+    padding: $sp-16;
+    text-decoration: none;
+}
+
+.Nav-links a:visited {
+    color: $white;
+}
+
+.Nav-links a:hover {
+    text-decoration: underline;
+}

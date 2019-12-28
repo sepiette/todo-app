@@ -1,0 +1,47 @@
+@import './_colors.scss';
+@import './_spacing.scss';
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: $sp-0;
+    padding: $sp-0;
+}
+
+.checkbox {
+    display: block;
+    height: $sp-16;
+    width: $sp-16;
+    border: $sp-1 solid $gray-500;
+    border-radius: $sp-4;
+}
+
+.checkbox:hover { 
+    background-color: $gray-50;
+}
+
+
+/* Text Colors */
+.text-green {
+    color: $green-800;
+}
+
+.text-red {
+    color: $red-800;
+}
+
+.text-red-hover:hover {
+    color: $red-1000;
+}
+
+/* Buttons */
+.primary-btn {
+    background-color: $green-900;
+    border-radius: $sp-4;
+    color: $white;
+    height: $sp-32;
+    width: 100px;
+}
+
+.primary-btn:hover{
+    background-color: $green-1000;
+}
