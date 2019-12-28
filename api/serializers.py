@@ -11,6 +11,7 @@ class TodoSerializer(serializers.ModelSerializer):
             "description",
             "completed",
             "created_date",
+            "completed_date",
             "category_id",
         ]
 

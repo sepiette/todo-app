@@ -9,6 +9,7 @@ class Todo(models.Model):
     description = models.TextField()
     completed = models.BooleanField(default=False)
     created_date = models.DateTimeField(default=datetime.now)
+    completed_date = models.DateTimeField(null=True)
     category_id = models.ForeignKey(Category, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self):

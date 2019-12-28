@@ -15,7 +15,12 @@ function Todo(props) {
 
     let formatDate = (date) => {
         date = new Date(date);
-        return `${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}`;
+        const formattedMins = date.getMinutes() < 10 ? `0${date.getMinutes()}` : `${date.getMinutes()}`;
+        return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()} ${date.getHours()}:${formattedMins}`;
+    }
+
+    let showCompletedDate = (todo) => {
+        return todo.completed && todo.completed_date !== null ? <span className="Todo-complete-date">Completed: {formatDate(todo.completed_date)}</span> : '';
     }
 
     return (
@@ -24,13 +29,17 @@ function Todo(props) {
                 {isChecked(props.todo)}
                 <div>
                     <div className="Todo-title">{props.todo.title}</div>
-                    <div className="Todo-date">{formatDate(props.todo.created_date)}</div>
+                    <div className="Todo-date">Created: {formatDate(props.todo.created_date)}</div>
                 </div>
             </div>
             <div className="Todo-description">{props.todo.description}</div>
-            <i className="Todo-delete icofont-bin text-red text-red-hover"
-                title="Delete"
-                onClick={() => props.removeTodo(props.todo.id)}></i>
+            <div className="Todo-footer">
+                {showCompletedDate(props.todo)}
+                <i className="Todo-delete icofont-bin text-red text-red-hover"
+                    title="Delete"
+                    onClick={() => props.removeTodo(props.todo.id)}></i>
+            </div>
+
         </div>
     )
 }

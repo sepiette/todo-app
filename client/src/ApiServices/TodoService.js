@@ -24,7 +24,6 @@ export function deleteTodo(id) {
 }
 
 export function updateTodo(todo) {
-    console.log('updateTodoService', todo);
     return axios.put(`http://localhost:8000/api/todos/${todo.id}/`, todo).then(resp => {
         console.log(resp);
     }).catch(err => {

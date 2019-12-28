@@ -30,6 +30,7 @@ function TodoPage() {
             const currentTodo = cloneDeep(foundTodo);
             console.log(currentTodo)
             currentTodo.completed = true;
+            currentTodo.completed_date = new Date();
             updateTodo(currentTodo).then(() => fetchToDos());
         }
 

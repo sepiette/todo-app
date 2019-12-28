@@ -1,30 +1,54 @@
 @import '../assets/_colors.scss';
+@import '../assets/_spacing.scss';
+@import '../assets/_fonts.scss';
 
 .Todo-container {
     background-color: $white;
-    border: 1px solid $gray-500;
-    border-radius: 8px;
+    border: $sp-1 solid $gray-500;
+    border-radius: $sp-8;
     flex: 0 1 25%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin: 8px;
-    padding: 8px;
+    margin: $sp-8;
+    padding: $sp-8;
 }
 
 .Todo-header {
-    border-bottom: 1px solid $gray-500;
+    border-bottom: $sp-1 solid $gray-500;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 8px;
+    margin-bottom: $sp-8;
+}
+
+.Todo-date{
+    font-size: $font-size-body-sm;
+    font-weight: 500;
+    margin-top: $sp-4;
+    text-align: right;
+}
+
+.Todo-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .Todo-completed {
     flex: 1 0 20%;
 }
 
+.Todo-complete-date {
+    color: $green-1000;
+    font-size: $font-size-body-sm;
+    font-weight: 700;
+    flex: 1 0 80%;
+}
+
 .Todo-title {
-    font-size: 1.25rem;
+    color: $theme-blue-800;
+    font-size: $font-size-header-sm;
     font-weight: 700;
     flex: 0 1 80%;
     text-align: right;
@@ -36,7 +60,7 @@
 }
 
 .Todo-description {
-    font-size: 0.845rem;
+    font-size: $font-size-body-md;
     line-height: 18px;
-    padding:8px;
+    padding: $sp-8;
 }
