@@ -4,15 +4,12 @@ import axios from 'axios';
 import {cloneDeep} from 'lodash';
 import { getTodos, createTodo, deleteTodo, updateTodo } from './ApiServices/TodoService';
 import './App.css';
+import CreateTodoForm from './CreateTodoForm/CreateTodoForm';
 
 function App() {
-    const DEFAULT_TODO = {
-        title: '',
-        description: ''
-    };
+    
     const [todos, setTodos] = useState([]);
     const [showAddToDo, setShowAddToDo] = useState(false);
-    let newTodo = { ...DEFAULT_TODO };
 
     useEffect(() => {
         fetchToDos();
@@ -28,12 +25,6 @@ function App() {
         deleteTodo(id).then(() => fetchToDos());
     }
 
-    let addToDo = () => {
-        createTodo(newTodo).then(() => fetchToDos());
-        setShowAddToDo(false);
-        newTodo = { ...DEFAULT_TODO };
-    };
-
     let updateCompletedTodo = (id) => {
         const foundTodo = todos.find(todo => todo.id === id) || null;
         if (foundTodo !== null) {
@@ -48,11 +39,7 @@ function App() {
     let showAddToDoForm = () => {
         if (showAddToDo) {
             return (
-                <div className="App-add-todo">
-                    <input type="text" placeholder="Title" onChange={(e) => { newTodo.title = e.target.value }}></input>
-                    <textarea placeholder="Description" onChange={(e) => { newTodo.description = e.target.value }} />
-                    <button className="App-btn" onClick={() => addToDo()}>Add Todo</button>
-                </div>
+                <CreateTodoForm  showModal={setShowAddToDo} onCreate={fetchToDos} />
             );
         }
         return '';

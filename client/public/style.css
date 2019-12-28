@@ -27,3 +27,11 @@ body {
 .text-red-hover:hover {
     color: #a1382f;
 }
+
+/* Buttons */
+.primary-btn {
+    background-color: #6ac74c;
+    border-radius: 4px;;
+    height: 32px;
+    width: 100px;
+}
