@@ -4,6 +4,7 @@ import { cloneDeep } from 'lodash';
 import { getTodos, deleteTodo, updateTodo } from '../ApiServices/TodoService';
 import './TodoPage.scss';
 import CreateTodoForm from '../CreateTodoForm/CreateTodoForm';
+import Toolbar from '../Toolbar/Toolbar';
 
 function TodoPage() {
 
@@ -47,7 +48,7 @@ function TodoPage() {
 
     return (
             <div>
-                <button className="primary-btn" onClick={() => setShowAddToDo(true)}>Add Todo</button>
+                <Toolbar showModal={setShowAddToDo}/>
                 <div className="TodoPage-container">
                     {todos.map(todo => {
                         return <Todo key={todo.id}
