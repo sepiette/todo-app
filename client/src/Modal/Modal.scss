@@ -15,15 +15,15 @@
     border: $sp-1 solid $gray-500;
     display: flex;
     flex-direction: column;
-    position: absolute;
-    top: 25%;
-    left: 30%;
+    position: relative;
+    margin: 25% auto;
     padding: $sp-16;
     width: 40%;
 }
 
 .Modal-body {
     margin: 0 auto;
+    width: 100%;
 }
 
 .close-icon {

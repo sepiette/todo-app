@@ -4,22 +4,26 @@ import Todo from './Todo';
 import { cloneDeep } from 'lodash';
 import { getTodos, deleteTodo, updateTodo } from '../ApiServices/TodoService';
 import './TodoPage.scss';
-import CreateTodoForm from '../CreateTodoForm/CreateTodoForm';
 import Toolbar from '../Toolbar/Toolbar';
 import Modal from '../Modal/Modal';
 
 function TodoPage() {
 
     const [todos, setTodos] = useState([]);
+    const [filteredTodos, setFilteredTodos] = useState([]);
     const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
         fetchToDos();
     }, [])
 
+    useEffect(() => {
+        setFilteredTodos(todos);
+    }, [todos])
+
     let fetchToDos = () => {
-        getTodos().then(data => {
-            setTodos(data);
+        return getTodos().then(data => {
+            return setTodos(data);
         });
     }
 
@@ -42,8 +46,8 @@ function TodoPage() {
         setShowModal(show);
         if (showModal) {
             ReactDOM.render(
-            <Modal onClose={closeModal} modalBody={modalContent} />,
-             document.getElementById('modal'));
+                <Modal onClose={closeModal} modalBody={modalContent} />,
+                document.getElementById('modal'));
         }
     }
 
@@ -52,11 +56,33 @@ function TodoPage() {
         ReactDOM.unmountComponentAtNode(el);
     }
 
+    let filterByCategory = (cat_id) => {
+        if (parseInt(cat_id) === -1) {
+            console.log('TODOS', todos);
+            setFilteredTodos(todos);
+        } else {
+            const filtered = todos.filter(td =>
+                td.category_id === parseInt(cat_id)
+            );
+            console.log('FILTERED', filtered);
+            setFilteredTodos(filtered);
+        }
+        console.log('filter by cat', cat_id)
+
+    }
+
+    const ACTIONS = {
+        onClose: closeModal,
+        showModal: makeModalsVisible,
+        updateTodos: setTodos,
+        onFilter: filterByCategory
+    };
     return (
         <div>
-            <Toolbar onClose={closeModal} showModal={makeModalsVisible} onCreate={fetchToDos} />
+            <Toolbar
+                actions={ACTIONS} />
             <div className="TodoPage-container">
-                {todos.map(todo => {
+                {filteredTodos.map(todo => {
                     return <Todo key={todo.id}
                         todo={todo}
                         removeTodo={removeTodo}

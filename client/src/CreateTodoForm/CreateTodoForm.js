@@ -1,6 +1,6 @@
 import React from 'react';
 import './CreateTodoForm.scss';
-import { createTodo } from '../ApiServices/TodoService';
+import { createTodo, getTodos } from '../ApiServices/TodoService';
 
 function CreateTodoForm(props) {
     const DEFAULT_TODO = {
@@ -10,7 +10,7 @@ function CreateTodoForm(props) {
     let newTodo = { ...DEFAULT_TODO };
 
     let addTodo = () => {
-        createTodo(newTodo).then(() => props.onCreate());
+        createTodo(newTodo).then(() => getTodos().then(data => props.onCreate(data)));
         newTodo = { ...DEFAULT_TODO };
         props.onClose();
     };

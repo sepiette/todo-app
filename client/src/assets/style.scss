@@ -1,5 +1,6 @@
 @import './_colors.scss';
 @import './_spacing.scss';
+@import './fonts';
 
 body {
     font-family: Arial, Helvetica, sans-serif;
@@ -36,8 +37,8 @@ body {
 button {
     border-radius: $sp-4;
     height: $sp-32;
+    font-size: $font-size-body-md;
     margin: $sp-8;
-    width: 100px;
 }
 
 .primary-btn {
@@ -56,4 +57,19 @@ button {
     &:hover {
         background-color: $theme-blue-700;
     }
+}
+
+//Select
+
+select {
+    height: $sp-32;
+    background-color: $white;
+    border: $sp-1 solid $gray-500;
+    font-size: $font-size-body-md;
+    margin: $sp-8;
+}
+
+// Other Styles
+.label {
+    padding: 0 $sp-8;
 }

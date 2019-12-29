@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const CAT_URL = 'http://localhost:8000/categories/';
+const CAT_URL = 'http://localhost:8000/api/categories/';
 
 export function getCategories() {
     return axios.get(CAT_URL).then(resp => {
