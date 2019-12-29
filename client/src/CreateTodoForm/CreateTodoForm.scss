@@ -1,0 +1,19 @@
+.CreateTodo-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.CreateTodo-title {
+    border-radius: 8px;
+    height: 28px;
+    padding: 0 16px;
+    margin: 8px 0;
+}
+
+.CreateTodo-description {
+    border: 1px solid #acacac;
+    border-radius: 8px;
+    height: 80px;
+    padding: 16px;
+    margin: 8px 0;
+}

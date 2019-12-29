@@ -16,7 +16,7 @@ export function createTodo(data) {
 }
 
 export function deleteTodo(id) {
-    return axios.delete(`http://localhost:8000/api/todos/${id}`).then(resp => {
+    return axios.delete(`${TODO_URL}${id}`).then(resp => {
         console.log(resp);
     }).catch(err => {
         console.error(err);
@@ -24,7 +24,7 @@ export function deleteTodo(id) {
 }
 
 export function updateTodo(todo) {
-    return axios.put(`http://localhost:8000/api/todos/${todo.id}/`, todo).then(resp => {
+    return axios.put(`${TODO_URL}${todo.id}/`, todo).then(resp => {
         console.log(resp);
     }).catch(err => {
         console.error(err);
